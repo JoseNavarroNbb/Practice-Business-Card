@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Business Card</string>
+
+    <string name="full_name">José Navarro</string>
+    <string name="full_post">Analyst</string>
+    <string name="phone">2255448877</string>
+    <string name="red_social">social_red</string>
+    <string name="email_card">carlos@gmail.com</string>
+</resources>

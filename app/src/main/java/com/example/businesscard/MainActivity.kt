@@ -20,6 +20,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -57,16 +58,13 @@ fun BusinessCardApp() {
                 backgroundColor = Color(0xFF00BCD4),
                 modifier = Modifier.weight(1f)
             )
-
         }
-
         Row(Modifier.weight(1f)) {
             ViewCardSecond(
                 title = stringResource(R.string.phone),
                 description = stringResource(R.string.red_social),
                 email= stringResource(R.string.email_card),
                 backgroundColor = Color(0xFF00BCD4) )
-
 
         }
 
@@ -90,10 +88,9 @@ private fun ViewCardPrincipal(
         horizontalAlignment = Alignment.CenterHorizontally
 
     ) {
-        val image = painterResource(R.drawable.android_logo)
         Box {
             Image(
-                painter = image,
+                painter = painterResource(R.drawable.android_logo),
                 contentDescription = null
 
             )
@@ -101,12 +98,12 @@ private fun ViewCardPrincipal(
 
         Text(
             text = title,
-            modifier = Modifier.padding(bottom = 40.dp),
+            modifier = Modifier.align(alignment = Alignment.CenterHorizontally),
             fontWeight = FontWeight.Bold
         )
         Text(
             text = description,
-            modifier = Modifier.padding(bottom = 20.dp),
+            modifier = Modifier.align(alignment = Alignment.CenterHorizontally),
             fontWeight = FontWeight.Bold
         )
 
@@ -132,21 +129,75 @@ private fun ViewCardSecond(
         horizontalAlignment = Alignment.CenterHorizontally
 
     ) {
-        Text(
-            text = title,
-            modifier = Modifier.padding(bottom = 16.dp),
-            fontWeight = FontWeight.Bold
-        )
-        Text(
-            text = description,
-            modifier = Modifier.padding(bottom = 16.dp),
-            fontWeight = FontWeight.Bold
-        )
-        Text(
-            text = email,
-            modifier = Modifier.padding(bottom = 16.dp),
-            fontWeight = FontWeight.Bold
-        )
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.Center
+        ) {
+            Column(
+                modifier = Modifier.align(Alignment.CenterVertically)
+            ) {
+                Image(
+                    painter = painterResource(R.drawable.ic_phone),
+                    contentDescription = null,
+                    modifier = Modifier.padding(end = 8.dp)
+                )
+
+            }
+
+            Text(
+                text = title,
+                modifier = Modifier.padding(bottom = 16.dp),
+                fontWeight = FontWeight.Bold
+            )
+
+        }
+
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.Center
+        ) {
+            Column(
+                modifier = Modifier.align(Alignment.CenterVertically)
+            ) {
+                Image(
+                    painter = painterResource(R.drawable.ic_share),
+                    contentDescription = null,
+                    modifier = Modifier.padding(end = 8.dp)
+                )
+
+            }
+
+            Text(
+                text = description,
+                modifier = Modifier.padding(bottom = 16.dp),
+                fontWeight = FontWeight.Bold
+            )
+
+        }
+
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.Center
+
+        ){
+            Column(
+                modifier = Modifier.align(Alignment.CenterVertically)
+            ) {
+                Image(
+                    painter = painterResource(R.drawable.ic_email),
+                    contentDescription = null,
+                    modifier = Modifier.padding(8.dp)
+                )
+
+            }
+            Text(
+                text = email,
+                modifier = Modifier.padding(bottom = 16.dp),
+                fontWeight = FontWeight.Bold
+            )
+        }
+
+
     }
 
 }
@@ -155,6 +206,6 @@ private fun ViewCardSecond(
 @Composable
 fun GreetingPreview() {
     BusinessCardTheme {
-       BusinessCardApp()
+        BusinessCardApp()
     }
 }
